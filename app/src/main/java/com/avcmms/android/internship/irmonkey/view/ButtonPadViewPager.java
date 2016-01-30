@@ -1,6 +1,7 @@
 package com.avcmms.android.internship.irmonkey.view;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -41,29 +42,6 @@ public class ButtonPadViewPager extends ViewPager {
         }
     };
 
-    private final OnPageChangeListener mOnPageChangeListener = new SimpleOnPageChangeListener() {
-        private void recursivelySetEnabled(View view, boolean enabled) {
-            if (view instanceof ViewGroup) {
-                final ViewGroup viewGroup = (ViewGroup) view;
-                for (int childIndex = 0; childIndex < viewGroup.getChildCount(); ++childIndex) {
-                    recursivelySetEnabled(viewGroup.getChildAt(childIndex), enabled);
-                }
-            } else {
-                view.setEnabled(enabled);
-            }
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            if (getAdapter() == mStaticPagerAdapter) {
-                for (int childIndex = 0; childIndex < getChildCount(); ++childIndex) {
-                    // Only enable subviews of the current page.
-                    recursivelySetEnabled(getChildAt(childIndex), childIndex == position);
-                }
-            }
-        }
-    };
-
     private final PageTransformer mPageTransformer = new PageTransformer() {
         @Override
         public void transformPage(View view, float position) {
@@ -87,8 +65,39 @@ public class ButtonPadViewPager extends ViewPager {
         super(context, attrs);
 
         setAdapter(mStaticPagerAdapter);
-        setBackgroundColor(getResources().getColor(android.R.color.black));
-        setOnPageChangeListener(mOnPageChangeListener);
+        setBackgroundColor(ContextCompat.getColor(context, android.R.color.black));
+        addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            private void recursivelySetEnabled(View view, boolean enabled) {
+                if (view instanceof ViewGroup) {
+                    final ViewGroup viewGroup = (ViewGroup) view;
+                    for (int childIndex = 0; childIndex < viewGroup.getChildCount(); ++childIndex) {
+                        recursivelySetEnabled(viewGroup.getChildAt(childIndex), enabled);
+                    }
+                } else {
+                    view.setEnabled(enabled);
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (getAdapter() == mStaticPagerAdapter) {
+                    for (int childIndex = 0; childIndex < getChildCount(); ++childIndex) {
+                        // Only enable subviews of the current page.
+                        recursivelySetEnabled(getChildAt(childIndex), childIndex == position);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         setPageMargin(getResources().getDimensionPixelSize(R.dimen.pad_page_margin));
         setPageTransformer(false, mPageTransformer);
 
