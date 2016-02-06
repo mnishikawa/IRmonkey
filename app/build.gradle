@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.avcmms.android.internship.irmonkey"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -25,6 +25,7 @@ dependencies {
     compile 'com.android.support:design:23.+'
     compile 'com.android.support:gridlayout-v7:23.1.0'
     compile 'com.getirkit:irkit-android-sdk:1.3.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
 
     testCompile 'junit:junit:4.12'
 }
