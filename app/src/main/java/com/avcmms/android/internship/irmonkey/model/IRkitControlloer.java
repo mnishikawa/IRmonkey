@@ -52,13 +52,13 @@ final public class IRkitControlloer {
     }
 
     /**
-     * id–ˆ‚É’è‹`‚³‚ê‚Ä‚¢‚éƒRƒ}ƒ“ƒh‚ğIRkit‘—M
-     * @param int id : w’è‚³‚ê‚½id‚©‚ç’è‹`‚³‚ê‚Ä‚¢‚éƒRƒ}ƒ“ƒh‚ğˆø‚«o‚·
+     * idæ¯ã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒãƒ³ãƒ‰ã‚’IRkité€ä¿¡
+     * @param int id : æŒ‡å®šã•ã‚ŒãŸidã‹ã‚‰å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒãƒ³ãƒ‰ã‚’å¼•ãå‡ºã™
      **/
     public void sendCommand(int id) {
-        // id–ˆ‚É’è‹`‚³‚ê‚Ä‚¢‚éƒRƒ}ƒ“ƒh‚ğIRHTTPClientŒo—R‚ÅIrKit‚É‘—M‚·‚é
-        // Endpoint‚ÍMC-R-012‚ğ‘z’è
-        // TODO: —˜—p‚·‚é‹@Ší–ˆ‚ÉIP‚ğ•ÏX‚·‚é
+        // idæ¯ã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒãƒ³ãƒ‰ã‚’IRHTTPClientçµŒç”±ã§IrKitã«é€ä¿¡ã™ã‚‹
+        // Endpointã¯MC-R-012ã‚’æƒ³å®š
+        // TODO: åˆ©ç”¨ã™ã‚‹æ©Ÿå™¨æ¯ã«IPã‚’å¤‰æ›´ã™ã‚‹
         IRHTTPClient httpClient = IRKit.sharedInstance().getHTTPClient();
         httpClient.setDeviceAPIEndpoint(mContext.getString(R.string.target_irkit_ip));
 
@@ -66,7 +66,7 @@ final public class IRkitControlloer {
         IRDeviceAPIService.PostMessagesRequest req = new IRDeviceAPIService.PostMessagesRequest();
 
         // see http://getirkit.com/
-        // /POST/1/message ‚ÉK‚Á‚Ä "raw", "38", data‚ğİ’è
+        // /POST/1/message ã«ç¿’ã£ã¦ "raw", "38", dataã‚’è¨­å®š
         req.format =  mContext.getString(R.string.parameter_format);
         req.freq = PARAMETER_FREQ;
         req.data = ArrayUtils.toPrimitive(mSparseArray.get(id));
