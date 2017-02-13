@@ -1,4 +1,4 @@
-package com.avcmms.android.internship.irmonkey;
+package com.avcmms.android.internship.irrooster;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
