@@ -1,4 +1,4 @@
-package com.avcmms.android.internship.irrooster;
+package com.avcmms.android.internship.irmonkey;
 
 import org.junit.Test;
 

@@ -1,11 +1,11 @@
-# IRrooster
-IRKitサンプルコード酉（とり）年バージョン
+# IRmonkey
+IRKitサンプルコード申（さる）年バージョン
 
 IRKitでテレビのリモコン操作を行うサンプルアプリケーション
 
 ## 動作確認デバイス
-Android 6.0.1(Api 23)
-Nexus 6P
+Android 6.0.1(Api 23)  
+Nexus 6
 
 ## 開発情報
 
